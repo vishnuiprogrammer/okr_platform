@@ -4,21 +4,25 @@ import { logger } from '../middleware/logger.middleware.js';
 
 export const db = mysql2.createPool({
    host: db_config.host,
+   port: db_config.port,
    user: db_config.user,
    password: db_config.password,
    database: db_config.database,
+   ssl: db_config.ssl,
    waitForConnections: true,
-   connectionLimit: parseInt(db_config.db_connectionLimit),
+   connectionLimit: db_config.connectionLimit,
    queueLimit: 0
 });
 
-const checkConnection = () => {
-   db.getConnection((err, connection) => {
-      if (err) {
-         logger.error("Error occurred while connecting with DB.");
-         throw err;
-      }
-      logger.info("DB Connection Successful..")
-      console.log("DB Connection Successful..");
-   });
-}
+export const checkConnection = async () => {
+   try {
+      const connection = await db.getConnection();
+      logger.info("DB Connection Successful.");
+      console.log("DB Connection Successful.");
+      connection.release();
+   } catch (err) {
+      logger.error("Error occurred while connecting with DB.");
+      console.error(err);
+      throw err;
+   }
+};
