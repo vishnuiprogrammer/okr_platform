@@ -8,10 +8,12 @@ export const db = mysql2.createPool({
    user: db_config.user,
    password: db_config.password,
    database: db_config.database,
-   ssl: db_config.ssl,
    waitForConnections: true,
    connectionLimit: db_config.connectionLimit,
-   queueLimit: 0
+   queueLimit: 0,
+   ssl: {
+        rejectUnauthorized: false  // ← changed from true to false
+    }
 });
 
 export const checkConnection = async () => {
