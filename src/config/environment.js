@@ -50,6 +50,6 @@ export const db_config = {
     database: process.env.DB_DATABASE_NAME,
     connectionLimit: Number(process.env.DB_CONNECTION_LIMIT || 10),
     ssl: {
-        rejectUnauthorized: true
+        rejectUnauthorized: false
     }
 };
