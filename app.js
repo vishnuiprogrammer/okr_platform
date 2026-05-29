@@ -11,10 +11,15 @@ app.use(cookieParser());
 // API Routes
 app.use("/api/v1", apiRouter);
 
+//  shows real error in Render logs
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    console.error("=== SERVER ERROR ===");
+    console.error("Message:", err.message);
+    console.error("Stack:", err.stack);
+    console.error("===================");
     res.status(500).json({ message: 'Internal Server Error' });
 });
+
 app.listen(config.port, () => {
     logger.info("Server is started")
     console.log(`Server is running on http://localhost:${config.port}`);
