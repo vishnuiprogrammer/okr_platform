@@ -7,14 +7,6 @@ import { logger } from "./src/middleware/logger.middleware.js";
 import cookieParser from "cookie-parser";
 import { apiRouter } from "./src/routes/api.routes.js";
 
-// Temporary debug - remove after confirmed working
-console.log("ENV CHECK:", {
-    DB_HOST: process.env.DB_HOST,
-    DB_PORT: process.env.DB_PORT,
-    DB_NAME: process.env.DB_DATABASE_NAME,
-    NODE_ENV: process.env.NODE_ENV
-});
-
 const app = express();
 app.use(express.json());
 app.use(cookieParser());

@@ -61,8 +61,8 @@ export const fetchAllObjectivesFromDb = async () => {
 // Fetch by Individual
 export const getObjectivesByIndividual = async (individual_user_id) => {
     const [rows] = await db.execute(
-        'SELECT * FROM objectives WHERE scope = "individual" AND individual_user_id = ?',
-        [individual_user_id]
+        `SELECT * FROM objectives WHERE scope = 'individual' AND individual_user_id = ?`,
+        [parseInt(individual_user_id)]
     );
     return rows;
 };
@@ -70,8 +70,8 @@ export const getObjectivesByIndividual = async (individual_user_id) => {
 // Fetch by Team
 export const getObjectivesByTeam = async (team_id) => {
     const [rows] = await db.execute(
-        'SELECT * FROM objectives WHERE scope = "team" AND team_id = ?',
-        [team_id]
+        `SELECT * FROM objectives WHERE scope = 'team' AND team_id = ?`,
+        [parseInt(team_id)]
     );
     return rows;
 };
@@ -79,8 +79,8 @@ export const getObjectivesByTeam = async (team_id) => {
 // Fetch by Department
 export const getObjectivesByDepartment = async (department_id) => {
     const [rows] = await db.execute(
-        'SELECT * FROM objectives WHERE scope = "department" AND department_id = ?',
-        [department_id]
+        `SELECT * FROM objectives WHERE scope = 'department' AND department_id = ?`,
+        [parseInt(department_id)]
     );
     return rows;
 };
@@ -88,8 +88,8 @@ export const getObjectivesByDepartment = async (department_id) => {
 // Fetch by Company / Organization
 export const getObjectivesByCompany = async (company_id) => {
     const [rows] = await db.execute(
-        'SELECT * FROM objectives WHERE scope = "organization" AND organization_id = ?',
-        [company_id]
+        `SELECT * FROM objectives WHERE scope = 'organization' AND organization_id = ?`,
+        [parseInt(company_id)]
     );
     return rows;
 };
