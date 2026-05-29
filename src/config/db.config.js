@@ -12,8 +12,8 @@ export const db = mysql2.createPool({
    connectionLimit: db_config.connectionLimit,
    queueLimit: 0,
    ssl: {
-        rejectUnauthorized: false  // ← changed from true to false
-    }
+      rejectUnauthorized: false
+   }
 });
 
 export const checkConnection = async () => {
