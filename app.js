@@ -11,7 +11,7 @@ import { apiRouter } from "./src/routes/api.routes.js";
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // it only allow access backend api's from this origin
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -24,10 +24,11 @@ app.use(cookieParser());
 app.use("/api/v1", apiRouter);
 
 app.use((err, req, res, next) => {
-    console.error("=== SERVER ERROR ===");
-    console.error("Message:", err.message);
-    console.error("Stack:", err.stack);
-    console.error("===================");
+
+    logger.error("=== SERVER ERROR ===");
+    logger.error("Message:", err.message);
+    logger.error("Stack:", err.stack);
+    logger.error("===================");
 
     res.status(500).json({
         success: false,
