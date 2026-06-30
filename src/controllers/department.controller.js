@@ -4,7 +4,6 @@ import { getAllDeptFromCompany } from "../services/department.service.js";
 export const departmentController = async (req, res) => {
     try {
         const deptId = await createDepartment(req.body);
-
         logger.info("Department created successfully")
         return res.status(201).json({
             status: "success",

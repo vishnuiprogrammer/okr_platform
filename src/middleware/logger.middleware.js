@@ -3,7 +3,7 @@ const { combine, timestamp, printf, colorize } = format;
 
 const customFormat = printf(({ timestamp, level, message, stack }) => {
     const logContent = stack || message;
-    return `${timestamp}:${level}:${logContent}`;
+    return `${timestamp} : ${level} : ${logContent}`;
 });
 
 const loggerTransports = [

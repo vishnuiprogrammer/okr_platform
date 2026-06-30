@@ -167,7 +167,7 @@ export const getProfileById = async (id) => {
     const [rows] = await db.execute(
         `SELECT
             user_id,
-            company_id,
+            company_id,   
             first_name,
             last_name,
             email,
